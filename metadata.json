@@ -1,0 +1,7 @@
+{
+  "name": "Room Plant - Premium Indoor Greens",
+  "description": "A high-conversion e-commerce platform for indoor plants, featuring AI-powered care guides, responsive design, and direct sales optimization.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
