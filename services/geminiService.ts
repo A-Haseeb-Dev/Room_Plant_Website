@@ -2,17 +2,36 @@
 import { GoogleGenAI, Type } from "@google/genai";
 
 export class GeminiService {
-  private ai: GoogleGenAI;
+  private ai: GoogleGenAI | null = null;
 
   constructor() {
-    // Always use the required initialization pattern for GoogleGenAI
-    this.ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    // Intentionally lazy-init client so missing env vars never crash app render.
+  }
+
+  private getClient(): GoogleGenAI | null {
+    if (this.ai) return this.ai;
+
+    const viteKey = (import.meta as any)?.env?.VITE_GEMINI_API_KEY;
+    const processKey = typeof process !== 'undefined' ? process.env?.API_KEY : undefined;
+    const apiKey = viteKey || processKey;
+
+    if (!apiKey) {
+      return null;
+    }
+
+    this.ai = new GoogleGenAI({ apiKey });
+    return this.ai;
   }
 
   async getPlantCareAdvice(plantName: string, query: string) {
     try {
+      const client = this.getClient();
+      if (!client) {
+        return "AI assistant is not configured yet. Add VITE_GEMINI_API_KEY to your .env file.";
+      }
+
       // Use ai.models.generateContent with model and contents together as per guidelines
-      const response = await this.ai.models.generateContent({
+      const response = await client.models.generateContent({
         model: 'gemini-3-flash-preview',
         contents: `You are a professional botanist and plant care expert for the brand "Room Plant". 
         A customer is asking about their ${plantName}.
@@ -32,7 +51,12 @@ export class GeminiService {
 
   async getPlantSuggestions(roomType: string, lighting: string) {
     try {
-      const response = await this.ai.models.generateContent({
+      const client = this.getClient();
+      if (!client) {
+        return [];
+      }
+
+      const response = await client.models.generateContent({
         model: 'gemini-3-flash-preview',
         contents: `Suggest 3 indoor plants for a ${roomType} with ${lighting} lighting conditions. 
         Format as a JSON array of objects with keys: name, reason.`,
