@@ -71,20 +71,20 @@ const CareGuide: React.FC = () => {
             </p>
             <div className="tip-grid grid sm:grid-cols-2 gap-6">
               {tips.map((tip, idx) => (
-                <div key={idx} className="tip-card opacity-0 p-6 bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div key={idx} className="tip-card opacity-0 p-6 bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
                   <div className="mb-4">{tip.icon}</div>
                   <h4 className="font-bold text-dark mb-2">{tip.title}</h4>
                   <p className="text-sm text-gray-500">{tip.desc}</p>
                 </div>
               ))}
             </div>
-            <button className="mt-10 px-8 py-3 bg-accent text-white rounded-lg font-semibold hover:bg-accent/90 transition-all">
+            <button className="mt-10 px-8 py-3 bg-accent text-white rounded-md font-semibold hover:bg-accent/90 transition-all">
               Explore All Guides
             </button>
           </div>
           
           <div className="guide-media opacity-0 relative">
-            <div className="rounded-3xl overflow-hidden shadow-2xl">
+            <div className="rounded-xl overflow-hidden shadow-2xl">
               <img 
                 src="https://images.unsplash.com/photo-1545241047-6083a3684587?auto=format&fit=crop&q=80&w=800" 
                 alt="Person caring for plant" 

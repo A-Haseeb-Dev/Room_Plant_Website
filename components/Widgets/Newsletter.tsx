@@ -18,12 +18,12 @@ const Newsletter: React.FC = () => {
           <input 
             type="email" 
             placeholder="Enter your email address" 
-            className="flex-grow px-6 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+            className="flex-grow px-6 py-4 rounded-md bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
             required
           />
           <button 
             type="submit"
-            className="px-8 py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-all shadow-lg shadow-primary/20"
+            className="px-8 py-4 bg-primary text-white font-bold rounded-md hover:bg-primary/90 transition-all shadow-lg shadow-primary/20"
           >
             Subscribe Now
           </button>

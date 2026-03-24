@@ -11,7 +11,7 @@ interface PlantCardProps {
 
 const PlantCard: React.FC<PlantCardProps> = ({ plant, onAddToCart, onViewDetails }) => {
   return (
-    <div className="plant-card opacity-0 group flex flex-col bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-300">
+    <div className="plant-card opacity-0 group flex flex-col bg-white border border-gray-100 rounded-lg overflow-hidden hover:shadow-2xl transition-all duration-300">
       <div className="relative aspect-[4/5] sm:h-72 overflow-hidden">
         <img 
           src={plant.image} 
@@ -54,7 +54,7 @@ const PlantCard: React.FC<PlantCardProps> = ({ plant, onAddToCart, onViewDetails
         <p className="text-gray-500 italic text-xs sm:text-sm mb-4 truncate">{plant.scientificName}</p>
         <div className="mt-auto flex justify-between items-center">
           <span className="text-xl sm:text-2xl font-bold text-primary">${plant.price.toFixed(2)}</span>
-          <span className={`text-[9px] sm:text-[10px] px-2 py-1 rounded-md font-bold uppercase tracking-wider ${
+          <span className={`text-[9px] sm:text-[10px] px-2 py-1 rounded-sm font-bold uppercase tracking-wider ${
             plant.careLevel === 'Easy' ? 'bg-green-100 text-green-700' :
             plant.careLevel === 'Intermediate' ? 'bg-blue-100 text-blue-700' :
             'bg-red-100 text-red-700'

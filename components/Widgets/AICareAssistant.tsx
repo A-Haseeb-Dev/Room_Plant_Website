@@ -48,7 +48,7 @@ const AICareAssistant: React.FC = () => {
       </button>
 
       {isOpen && (
-        <div className="fixed bottom-0 left-0 right-0 sm:bottom-24 sm:left-6 sm:right-auto z-50 w-full sm:w-[400px] h-full sm:h-[550px] sm:max-h-[70vh] bg-white sm:rounded-2xl shadow-2xl border-t sm:border border-gray-100 flex flex-col overflow-hidden animate-in slide-in-from-bottom-5 duration-300">
+        <div className="fixed bottom-0 left-0 right-0 sm:bottom-24 sm:left-6 sm:right-auto z-50 w-full sm:w-[400px] h-full sm:h-[550px] sm:max-h-[70vh] bg-white sm:rounded-lg shadow-2xl border-t sm:border border-gray-100 flex flex-col overflow-hidden animate-in slide-in-from-bottom-5 duration-300">
           <div className="bg-primary p-4 text-white flex justify-between items-center pt-[max(1rem,env(safe-area-inset-top))] sm:pt-4">
             <div className="flex items-center space-x-2">
               <Bot size={24} />
@@ -62,7 +62,7 @@ const AICareAssistant: React.FC = () => {
           <div ref={scrollRef} className="flex-grow p-4 overflow-y-auto space-y-4 bg-gray-50 scroll-touch">
             {messages.map((msg, i) => (
               <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`max-w-[85%] p-3 md:p-4 rounded-2xl text-sm md:text-base ${
+                <div className={`max-w-[85%] p-3 md:p-4 rounded-lg text-sm md:text-base ${
                   msg.role === 'user' 
                     ? 'bg-primary text-white rounded-tr-none' 
                     : 'bg-white text-dark shadow-sm border border-gray-100 rounded-tl-none'
@@ -73,7 +73,7 @@ const AICareAssistant: React.FC = () => {
             ))}
             {isTyping && (
               <div className="flex justify-start">
-                <div className="bg-white p-3 rounded-2xl shadow-sm border border-gray-100 rounded-tl-none flex space-x-1">
+                <div className="bg-white p-3 rounded-lg shadow-sm border border-gray-100 rounded-tl-none flex space-x-1">
                   <div className="w-1.5 h-1.5 bg-gray-300 rounded-full animate-bounce"></div>
                   <div className="w-1.5 h-1.5 bg-gray-300 rounded-full animate-bounce delay-100"></div>
                   <div className="w-1.5 h-1.5 bg-gray-300 rounded-full animate-bounce delay-200"></div>
@@ -87,14 +87,14 @@ const AICareAssistant: React.FC = () => {
               <input 
                 type="text"
                 placeholder="Ask about watering, light, etc."
-                className="w-full pl-4 pr-12 py-3 bg-gray-100 rounded-xl focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all outline-none text-base"
+                className="w-full pl-4 pr-12 py-3 bg-gray-100 rounded-md focus:ring-2 focus:ring-primary/20 focus:bg-white transition-all outline-none text-base"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
               />
               <button 
                 type="submit"
                 disabled={!input.trim() || isTyping}
-                className="absolute right-2 top-1.5 p-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors disabled:bg-gray-300 active:scale-90"
+                className="absolute right-2 top-1.5 p-2 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors disabled:bg-gray-300 active:scale-90"
               >
                 <Send size={20} />
               </button>

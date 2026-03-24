@@ -119,11 +119,11 @@ const Hero: React.FC<HeroProps> = ({ onAddToCart }) => {
             </p>
 
             <div className="hero-btns flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 opacity-0">
-              <a href="#shop" className="w-full sm:w-auto px-8 py-4 bg-primary text-white rounded-xl font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all flex items-center justify-center space-x-2 active:scale-95">
+              <a href="#shop" className="w-full sm:w-auto px-8 py-4 bg-primary text-white rounded-md font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all flex items-center justify-center space-x-2 active:scale-95">
                 <span>Browse Shop</span>
                 <ArrowRight size={20} />
               </a>
-              <a href="#about" className="w-full sm:w-auto px-8 py-4 bg-white/50 backdrop-blur-sm text-dark border border-gray-200 rounded-xl font-bold hover:border-primary hover:text-primary transition-all active:scale-95 text-center">
+              <a href="#about" className="w-full sm:w-auto px-8 py-4 bg-white/50 backdrop-blur-sm text-dark border border-gray-200 rounded-md font-bold hover:border-primary hover:text-primary transition-all active:scale-95 text-center">
                 Learn More
               </a>
             </div>
@@ -131,7 +131,7 @@ const Hero: React.FC<HeroProps> = ({ onAddToCart }) => {
 
           {/* Quick Shop Form */}
           <div ref={formRef} className="opacity-0 w-full max-w-md mx-auto lg:ml-auto">
-            <div className="bg-white/95 backdrop-blur-md p-6 sm:p-8 rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-white/50">
+            <div className="bg-white/95 backdrop-blur-md p-6 sm:p-8 rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-white/50">
               <div className="mb-6">
                 <h3 className="text-xl sm:text-2xl font-bold text-dark mb-1">Quick Shop</h3>
                 <p className="text-sm text-gray-500">Add our top favorite to your cart instantly.</p>
@@ -144,7 +144,7 @@ const Hero: React.FC<HeroProps> = ({ onAddToCart }) => {
                     type="text" 
                     required
                     placeholder="John Doe"
-                    className="w-full px-4 py-3 sm:py-3.5 rounded-xl bg-gray-50/50 border border-gray-100 focus:ring-4 focus:ring-primary/10 focus:border-primary focus:bg-white outline-none transition-all placeholder:text-gray-300 text-sm md:text-base"
+                    className="w-full px-4 py-3 sm:py-3.5 rounded-md bg-gray-50/50 border border-gray-100 focus:ring-4 focus:ring-primary/10 focus:border-primary focus:bg-white outline-none transition-all placeholder:text-gray-300 text-sm md:text-base"
                     value={selection.name}
                     onChange={e => setSelection({...selection, name: e.target.value})}
                   />
@@ -156,7 +156,7 @@ const Hero: React.FC<HeroProps> = ({ onAddToCart }) => {
                     type="email" 
                     required
                     placeholder="john@example.com"
-                    className="w-full px-4 py-3 sm:py-3.5 rounded-xl bg-gray-50/50 border border-gray-100 focus:ring-4 focus:ring-primary/10 focus:border-primary focus:bg-white outline-none transition-all placeholder:text-gray-300 text-sm md:text-base"
+                    className="w-full px-4 py-3 sm:py-3.5 rounded-md bg-gray-50/50 border border-gray-100 focus:ring-4 focus:ring-primary/10 focus:border-primary focus:bg-white outline-none transition-all placeholder:text-gray-300 text-sm md:text-base"
                     value={selection.email}
                     onChange={e => setSelection({...selection, email: e.target.value})}
                   />
@@ -167,7 +167,7 @@ const Hero: React.FC<HeroProps> = ({ onAddToCart }) => {
                     <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1">Plant</label>
                     <div className="relative">
                       <select 
-                        className="w-full px-4 py-3 sm:py-3.5 rounded-xl bg-gray-50/50 border border-gray-100 focus:ring-4 focus:ring-primary/10 focus:border-primary focus:bg-white outline-none appearance-none transition-all text-dark font-medium cursor-pointer text-sm md:text-base pr-10"
+                        className="w-full px-4 py-3 sm:py-3.5 rounded-md bg-gray-50/50 border border-gray-100 focus:ring-4 focus:ring-primary/10 focus:border-primary focus:bg-white outline-none appearance-none transition-all text-dark font-medium cursor-pointer text-sm md:text-base pr-10"
                         value={selection.plantId}
                         onChange={e => setSelection({...selection, plantId: e.target.value})}
                       >
@@ -184,7 +184,7 @@ const Hero: React.FC<HeroProps> = ({ onAddToCart }) => {
                     <input 
                       type="number" 
                       min="1" 
-                      className="w-full px-4 py-3 sm:py-3.5 rounded-xl bg-gray-50/50 border border-gray-100 focus:ring-4 focus:ring-primary/10 focus:border-primary focus:bg-white outline-none transition-all text-dark font-medium text-sm md:text-base"
+                      className="w-full px-4 py-3 sm:py-3.5 rounded-md bg-gray-50/50 border border-gray-100 focus:ring-4 focus:ring-primary/10 focus:border-primary focus:bg-white outline-none transition-all text-dark font-medium text-sm md:text-base"
                       value={selection.quantity}
                       onChange={e => setSelection({...selection, quantity: parseInt(e.target.value)})}
                     />
@@ -193,7 +193,7 @@ const Hero: React.FC<HeroProps> = ({ onAddToCart }) => {
                 
                 <button 
                   type="submit"
-                  className="w-full py-4 bg-cta text-white rounded-xl font-bold text-base md:text-lg hover:bg-cta/90 transition-all shadow-xl shadow-cta/20 flex items-center justify-center space-x-2 group active:scale-[0.98] mt-2"
+                  className="w-full py-4 bg-cta text-white rounded-md font-bold text-base md:text-lg hover:bg-cta/90 transition-all shadow-xl shadow-cta/20 flex items-center justify-center space-x-2 group active:scale-[0.98] mt-2"
                 >
                   <span>Add to Cart</span>
                   <ShoppingCart size={20} className="group-hover:translate-x-1 transition-transform" />

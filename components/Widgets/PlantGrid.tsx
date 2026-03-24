@@ -76,7 +76,7 @@ const PlantGrid: React.FC<PlantGridProps> = ({ onAddToCart, onViewDetails }) => 
               <a 
                 key={cat.id} 
                 href={`#cat-${cat.id}`}
-                className="category-card opacity-0 group relative h-48 sm:h-64 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all"
+                className="category-card opacity-0 group relative h-48 sm:h-64 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all"
               >
                 <img src={cat.image} alt={cat.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4">
@@ -95,7 +95,7 @@ const PlantGrid: React.FC<PlantGridProps> = ({ onAddToCart, onViewDetails }) => 
               <h2 className="text-3xl md:text-4xl font-bold text-dark mb-2 section-title opacity-0">Best Sellers</h2>
               <p className="text-gray-600 section-title opacity-0">Most loved by our international plant community.</p>
             </div>
-            <a href="#" className="section-title opacity-0 text-primary font-bold flex items-center space-x-2 px-4 py-2 bg-primary/5 rounded-lg hover:bg-primary/10 transition-all">
+            <a href="#" className="section-title opacity-0 text-primary font-bold flex items-center space-x-2 px-4 py-2 bg-primary/5 rounded-md hover:bg-primary/10 transition-all">
               <span>View All</span>
               <ArrowRight size={18} />
             </a>

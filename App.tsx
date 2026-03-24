@@ -9,6 +9,8 @@ import ShippingInfo from './components/Widgets/ShippingInfo';
 import Newsletter from './components/Widgets/Newsletter';
 import FloatingSocial from './components/Widgets/FloatingSocial';
 import AICareAssistant from './components/Widgets/AICareAssistant';
+import Preloader from './components/Shared/Preloader';
+import CustomCursor from './components/Shared/CustomCursor';
 import { Plant, CartItem } from './types';
 import { PLANTS } from './constants';
 import { X, Minus, Plus, Trash2, ShoppingBag, Star } from 'lucide-react';
@@ -18,6 +20,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const App: React.FC = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [selectedPlant, setSelectedPlant] = useState<Plant | null>(null);
@@ -100,8 +103,15 @@ const App: React.FC = () => {
   const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
 
   return (
-    <div ref={mainRef} className="min-h-screen bg-white flex flex-col">
-      <h1 className="sr-only">Buy Room Plants Online | Room Plant - Premium Indoor Greens</h1>
+    <>
+      {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
+      {!isLoading && <CustomCursor />}
+      
+      <div 
+        ref={mainRef} 
+        className={`min-h-screen bg-white flex flex-col ${isLoading ? 'invisible h-0 overflow-hidden' : 'visible opacity-100 transition-opacity duration-1000'}`}
+      >
+        <h1 className="sr-only">Buy Room Plants Online | Room Plant - Premium Indoor Greens</h1>
       
       <Navbar cartCount={cartCount} onCartClick={() => setIsCartOpen(true)} />
       
@@ -128,7 +138,7 @@ const App: React.FC = () => {
                 { name: 'Michael K.', city: 'Berlin', text: 'Fast international shipping. Recommended!' },
                 { name: 'Eliza R.', city: 'Tokyo', text: 'The care guides are so helpful for beginners.' }
               ].map((t, idx) => (
-                <div key={idx} className="testimonial-card opacity-0 p-6 md:p-8 bg-gray-50 rounded-2xl relative">
+                <div key={idx} className="testimonial-card opacity-0 p-6 md:p-8 bg-gray-50 rounded-lg relative">
                   <span className="text-5xl md:text-6xl text-primary/10 absolute top-4 left-4 font-serif">"</span>
                   <p className="text-gray-600 italic mb-6 relative z-10 text-sm md:text-base">{t.text}</p>
                   <div className="flex items-center space-x-3">
@@ -185,7 +195,7 @@ const App: React.FC = () => {
                 ) : (
                   cart.map(item => (
                     <div key={item.id} className="flex space-x-4">
-                      <div className="w-20 h-24 flex-shrink-0 bg-gray-100 rounded-lg overflow-hidden">
+                      <div className="w-20 h-24 flex-shrink-0 bg-gray-100 rounded-md overflow-hidden">
                         <img src={item.image} alt={item.name} className="w-full h-full object-cover" loading="lazy" />
                       </div>
                       <div className="flex-grow min-w-0">
@@ -218,7 +228,7 @@ const App: React.FC = () => {
                     <span className="font-bold text-dark">${cartTotal.toFixed(2)}</span>
                   </div>
                   <p className="text-xs text-gray-400">Shipping and taxes calculated at checkout.</p>
-                  <button className="w-full py-4 bg-primary text-white rounded-xl font-bold text-lg hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 active:scale-[0.98]">
+                  <button className="w-full py-4 bg-primary text-white rounded-md font-bold text-lg hover:bg-primary/90 transition-all shadow-lg shadow-primary/20 active:scale-[0.98]">
                     Proceed to Checkout
                   </button>
                 </div>
@@ -232,7 +242,7 @@ const App: React.FC = () => {
       {selectedPlant && (
         <div className="fixed inset-0 z-[110] overflow-hidden flex items-center justify-center p-0 md:p-4">
           <div className="absolute inset-0 bg-black/60 backdrop-blur-md transition-opacity" onClick={() => setSelectedPlant(null)}></div>
-          <div className="relative bg-white w-full md:max-w-4xl max-h-full md:max-h-[90vh] md:rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row animate-in zoom-in-95 duration-200">
+          <div className="relative bg-white w-full md:max-w-4xl max-h-full md:max-h-[90vh] md:rounded-xl overflow-hidden shadow-2xl flex flex-col md:flex-row animate-in zoom-in-95 duration-200">
             <button 
               onClick={() => setSelectedPlant(null)}
               className="absolute top-4 right-4 z-10 p-2 bg-white/80 backdrop-blur rounded-full text-dark hover:bg-white transition-colors shadow-lg active:scale-90"
@@ -267,11 +277,11 @@ const App: React.FC = () => {
                   <p className="text-gray-600 text-sm md:text-base leading-relaxed">{selectedPlant.description}</p>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="p-3 bg-gray-50 rounded-xl">
+                  <div className="p-3 bg-gray-50 rounded-md">
                     <p className="text-[10px] md:text-xs text-gray-400 uppercase font-bold mb-1">Care Level</p>
                     <p className="font-bold text-dark text-sm md:text-base">{selectedPlant.careLevel}</p>
                   </div>
-                  <div className="p-3 bg-gray-50 rounded-xl">
+                  <div className="p-3 bg-gray-50 rounded-md">
                     <p className="text-[10px] md:text-xs text-gray-400 uppercase font-bold mb-1">Category</p>
                     <p className="font-bold text-dark capitalize text-sm md:text-base">{selectedPlant.category}</p>
                   </div>
@@ -281,7 +291,7 @@ const App: React.FC = () => {
               <div className="flex space-x-4">
                 <button 
                   onClick={() => { addToCart(selectedPlant.id, 1); setSelectedPlant(null); }}
-                  className="flex-grow py-4 bg-cta text-white rounded-xl font-bold hover:bg-cta/90 transition-all shadow-lg shadow-cta/20 active:scale-[0.98]"
+                  className="flex-grow py-4 bg-cta text-white rounded-md font-bold hover:bg-cta/90 transition-all shadow-lg shadow-cta/20 active:scale-[0.98]"
                 >
                   Add to Cart
                 </button>
@@ -305,7 +315,8 @@ const App: React.FC = () => {
           </div>
         </div>
       )}
-    </div>
+      </div>
+    </>
   );
 };
 

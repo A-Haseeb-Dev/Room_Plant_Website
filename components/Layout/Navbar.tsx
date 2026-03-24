@@ -63,7 +63,7 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onCartClick }) => {
           {/* Logo Section */}
           <div className="flex items-center">
             <a href="#home" className="flex items-center space-x-3 group">
-              <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center group-hover:rotate-12 transition-all duration-500 shadow-lg shadow-primary/20">
+              <div className="w-10 h-10 bg-primary rounded-md flex items-center justify-center group-hover:rotate-12 transition-all duration-500 shadow-lg shadow-primary/20">
                 <span className="text-white font-bold text-xl">R</span>
               </div>
               <span className="text-xl md:text-2xl font-serif font-bold text-dark tracking-tight">Room Plant</span>
@@ -105,7 +105,7 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onCartClick }) => {
             {/* Mobile Toggle Button */}
             <button
               onClick={() => setIsOpen(true)}
-              className="lg:hidden p-2.5 text-dark hover:text-primary transition-colors active:scale-95 bg-gray-50 rounded-xl"
+              className="lg:hidden p-2.5 text-dark hover:text-primary transition-colors active:scale-95 bg-gray-50 rounded-md"
               aria-label="Open Menu"
             >
               <Menu size={24} />
@@ -123,7 +123,7 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onCartClick }) => {
           {/* Mobile Menu Header - High consistency with the main nav */}
           <div className="flex items-center justify-between px-6 h-20 border-b border-gray-50 pt-[env(safe-area-inset-top)] box-content">
              <div className="flex items-center space-x-3">
-                <div className="w-9 h-9 bg-primary rounded-xl flex items-center justify-center">
+                <div className="w-9 h-9 bg-primary rounded-md flex items-center justify-center">
                   <span className="text-white font-bold text-lg">R</span>
                 </div>
                 <span className="font-serif font-bold text-xl text-dark">Room Plant</span>
@@ -159,7 +159,7 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onCartClick }) => {
                <div className="mobile-nav-item">
                   <button 
                     onClick={() => { setIsOpen(false); window.location.href = '#shop'; }}
-                    className="w-full py-5 bg-primary text-white rounded-2xl font-bold text-lg shadow-xl shadow-primary/20 flex items-center justify-center space-x-3 active:scale-[0.98] transition-transform"
+                    className="w-full py-5 bg-primary text-white rounded-lg font-bold text-lg shadow-xl shadow-primary/20 flex items-center justify-center space-x-3 active:scale-[0.98] transition-transform"
                   >
                     <span>Explore Collection</span>
                     <ArrowRight size={20} />
